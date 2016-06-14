@@ -14,7 +14,6 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
-    @article = Article.find(params[:article_id])
     @comment = Comment.find(params[:id])
 
     respond_to do |format|
@@ -37,8 +36,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.find(params[:id])
+    @comment = Comment.find(params[:id])
   end
 
   # POST /comments
@@ -78,12 +76,12 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.find(params[:id])
+    
+    @comment = Comment.find(params[:id])
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to article_comments_path(@article) }
+      format.html { redirect_to articles_path }
       format.json { head :no_content }
     end
   end

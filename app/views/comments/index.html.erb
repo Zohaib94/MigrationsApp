@@ -13,14 +13,14 @@
   <tr>
     <td><%= comment.comment %></td>
     <td><%= comment.article.title %></td>
-    <td><%= link_to 'Show', [@article , comment] %></td>
-    <td><%= link_to 'Edit', edit_article_comment_path(@article , comment) %></td>
-    <td><%= link_to 'Destroy', [@article , comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', comment %></td>
+    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+    <td><%= link_to 'Destroy', comment , method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Comment', new_article_comment_path(@article) %>
+<%= link_to 'New Comment', new_comment_path(@article) %>
 <%= link_to 'Go to Articles' , articles_path %>

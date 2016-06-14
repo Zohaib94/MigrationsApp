@@ -2,9 +2,10 @@ MigrationsApp::Application.routes.draw do
   root :to => 'articles#index'
 
   resources :articles do 
-    resources :comments
+    resources :comments , only: [:index, :new, :create, :edit]
   end
 
+  resources :comments , only: [:edit, :update, :show, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
