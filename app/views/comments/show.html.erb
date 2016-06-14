@@ -6,10 +6,15 @@
 </p>
 
 <p>
-  <b>Article:</b>
-  <%= @comment.article %>
+  <b>Article Title:</b>
+  <%= @comment.article.title %>
+</p>
+
+<p>
+	<b>Article Content:</b>
+	<%= @comment.article.content %>
 </p>
 
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Edit', edit_article_comment_path(@article , @comment) %> |
+<%= link_to 'Back', article_comments_path %>

@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
+    @article = Article.find(params[:article_id])
     @comment = Comment.find(params[:id])
 
     respond_to do |format|
