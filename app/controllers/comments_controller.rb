@@ -26,7 +26,8 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.json
   def new
-    @comment = Comment.new
+    @article = Article.find(params[:article_id])
+    @comment = @article.comments.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,12 +43,13 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
+    @article = Article.find(params[:article_id])
     @comment = Comment.new(params[:comment])
-
+    @comment.article_id = params[:article_id]
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render json: @comment, status: :created, location: @comment }
+        format.html { redirect_to article_comments_path(@article), notice: 'Comment was successfully created.' }
+        format.json { render json: [@article , @comment], status: :created, location: @comment }
       else
         format.html { render action: "new" }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
