@@ -3,7 +3,8 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
-
+    t = Test.new
+    @isPrint = t.hello(true)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @articles }
