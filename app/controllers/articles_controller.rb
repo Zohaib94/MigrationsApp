@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
     t = Test.new
-    @isPrint = t.hello(true)
+    @isPrint = t.hello(false)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @articles }

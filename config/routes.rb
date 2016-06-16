@@ -1,4 +1,7 @@
 MigrationsApp::Application.routes.draw do
+  resources :tests
+
+
   root :to => 'articles#index'
 
   resources :articles do 
